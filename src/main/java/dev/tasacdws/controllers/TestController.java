@@ -12,8 +12,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 public class TestController {
 	
 	@RequestMapping(value = "/hello", method=RequestMethod.GET)
-	@ResponseBody // says that the string returned should be interpreted literally
-	//by default spring expects controllers to reutrn views aka html
+	@ResponseBody
 	public String sayHello() {
 		return "Hello from my application!";
 	}
