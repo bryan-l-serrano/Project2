@@ -30,9 +30,7 @@ public class Comment {
 	@Column(name = "s_id")
 	private int s_id;
 	
-	@ManyToOne
-	@JoinColumn(name ="s_id")
-	private Song song;
+
 
 	public Comment() {
 		super();

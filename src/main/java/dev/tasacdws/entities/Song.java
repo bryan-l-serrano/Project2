@@ -45,8 +45,7 @@ public class Song {
 	@Column(name = "link")
 	private String link;
 	
-	@OneToMany(mappedBy = "song", fetch = FetchType.LAZY)
-	private Set<Comment> comments;
+	
 
 	public Song() {
 		super();
@@ -168,15 +167,7 @@ public class Song {
 
 
 
-	public Set<Comment> getComments() {
-		return comments;
-	}
 
-
-
-	public void setComments(Set<Comment> comments) {
-		this.comments = comments;
-	}
 
 
 
