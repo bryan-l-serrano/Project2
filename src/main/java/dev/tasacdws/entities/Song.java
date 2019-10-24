@@ -1,4 +1,4 @@
-package dev.tasacdws.entitiies;
+package dev.tasacdws.entities;
 
 import java.util.Set;
 
@@ -15,7 +15,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name="song")
-public class song {
+public class Song {
 	
 	
 	@Id
@@ -25,7 +25,7 @@ public class song {
 	
 	@ManyToOne
 	@JoinColumn(name ="a_id")
-	private artist artist;
+	private Artist artist;
 	
 	@Column(name = "name")
 	private String name;
@@ -46,16 +46,16 @@ public class song {
 	private String link;
 	
 	@OneToMany(mappedBy = "song", fetch = FetchType.LAZY)
-	private Set<comment> comments;
+	private Set<Comment> comments;
 
-	public song() {
+	public Song() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
 	
 
-	public song(int id, String name, int releaseDate, String albumName, int inAlbum, int rating, String link) {
+	public Song(int id, String name, int releaseDate, String albumName, int inAlbum, int rating, String link) {
 		super();
 		this.id = id;
 		this.name = name;
@@ -64,7 +64,6 @@ public class song {
 		this.inAlbum = inAlbum;
 		this.rating = rating;
 		this.link = link;
-		this.comments = comments;
 	}
 
 
@@ -85,13 +84,13 @@ public class song {
 
 
 
-	public artist getArtist() {
+	public Artist getArtist() {
 		return artist;
 	}
 
 
 
-	public void setArtist(artist artist) {
+	public void setArtist(Artist artist) {
 		this.artist = artist;
 	}
 
@@ -169,13 +168,13 @@ public class song {
 
 
 
-	public Set<comment> getComments() {
+	public Set<Comment> getComments() {
 		return comments;
 	}
 
 
 
-	public void setComments(Set<comment> comments) {
+	public void setComments(Set<Comment> comments) {
 		this.comments = comments;
 	}
 

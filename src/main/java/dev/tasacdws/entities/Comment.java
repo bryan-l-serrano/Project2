@@ -1,4 +1,4 @@
-package dev.tasacdws.entitiies;
+package dev.tasacdws.entities;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -11,7 +11,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name="comment")
-public class comment {
+public class Comment {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -32,14 +32,14 @@ public class comment {
 	
 	@ManyToOne
 	@JoinColumn(name ="s_id")
-	private song song;
+	private Song song;
 
-	public comment() {
+	public Comment() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
-	public comment(int id, int rating, int u_id, int s_id) {
+	public Comment(int id, int rating, int u_id, int s_id) {
 		super();
 		this.id = id;
 		this.rating = rating;

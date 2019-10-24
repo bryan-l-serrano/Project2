@@ -1,4 +1,4 @@
-package dev.tasacdws.entitiies;
+package dev.tasacdws.entities;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -8,12 +8,12 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="users")
-public class users {
+@Table(name="artist")
+public class Artist {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "u_id")
+	@Column(name = "a_id")
 	private int id;
 	
 	@Column(name = "name")
@@ -25,12 +25,12 @@ public class users {
 	@Column(name = "password")
 	private String password;
 
-	public users() {
+	public Artist() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
-	public users(int id, String name, String username, String password) {
+	public Artist(int id, String name, String username, String password) {
 		super();
 		this.id = id;
 		this.name = name;
@@ -72,9 +72,8 @@ public class users {
 
 	@Override
 	public String toString() {
-		return "users [id=" + id + ", name=" + name + ", username=" + username + ", password=" + password + "]";
+		return "artist [id=" + id + ", name=" + name + ", username=" + username + ", password=" + password + "]";
 	}
-	
 	
 	
 
