@@ -11,7 +11,7 @@ public interface UserService {
 		//read
 		Users getUserById(int id);
 		Users getUserByUsername(String username);
-		Users getUserByUsernameAndPassword(String username, String password);
+		//Users getUserByUsernameAndPassword(String username, String password);
 		
 		//update
 		Users updateUser(Users user);

@@ -8,14 +8,15 @@ import org.junit.jupiter.api.TestMethodOrder;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.core.annotation.Order;
+import org.springframework.test.annotation.Commit;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.example.demo.Project2BackendApplication;
 
-
-
+import dev.tasacdws.entities.Users;
 import dev.tasacdws.services.UserService;
 
 @SpringBootTest
@@ -28,36 +29,58 @@ class UsersServiceTest {
 	@Autowired
 	UserService us;
 	
+	int id;
+
 	@Test
-	void createUser() {
-		fail("Not yet implemented");
+	@Order(1)
+	@Commit
+	public void createUser() {
+		Users u = new Users();
+		u.setId(0);
+		u.setName("User1");
+		u.setPassword("password");
+		u.setUsername("coolestDude1");
+		u = this.us.createUser(u);
+		id = u.getId();
+		System.out.println(id);
 	}
 	
 	@Test
+	@Order(2)
 	void getUserById() {
-		fail("Not yet implemented");
+		Users art = this.us.getUserById(id);
+		assertTrue(art.getPassword().equals("password"));
 	}
 	
 	@Test
+	@Order(3)
 	void getUserByUsername() {
-		fail("Not yet implemented");
+		Users art = this.us.getUserByUsername("coolestDude1");
+		assertTrue(art.getName().equals("User1"));
 	}
 	
 	@Test
-	void getUserByUsernameAndPassword() {
-		fail("Not yet implemented");
-	}
-	
-	@Test
+	@Order(4)
+	@Commit
 	void updateUser() {
-		fail("Not yet implemented");
+		Users art = this.us.getUserByUsername("coolestDude1");
+		art.setName("wow");
+		this.us.updateUser(art);
+		
+		Users art2 = this.us.getUserByUsername("coolestDude1");
+		assertTrue(art2.getName().equals("wow"));
 	}
 	
 	
 	
 	@Test
+	@Order(5)
+	@Commit
 	void deleteUser() {
-		fail("Not yet implemented");
+		Users u = this.us.getUserByUsername("coolestDude1");
+		this.us.deleteUser(u);
+		assertNull(this.us.getUserByUsername("coolestDude1"));
+		
 	}
 
 }

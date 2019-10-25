@@ -33,15 +33,15 @@ public class UsersServiceImpl implements UserService{
 		return user;
 	}
 
-	@Override
-	public Users getUserByUsernameAndPassword(String username, String password) {
-		Users user = ur.findByUsername(username);
-		if(user.getPassword().equals(password)) {
-			return user;
-		}else {
-			return null;
-		}
-	}
+//	@Override
+//	public Users getUserByUsernameAndPassword(String username, String password) {
+//		Users user = ur.findByUsername(username);
+//		if(user.getPassword().equals(password)) {
+//			return user;
+//		}else {
+//			return null;
+//		}
+//	}
 
 	@Override
 	public Users updateUser(Users user) {

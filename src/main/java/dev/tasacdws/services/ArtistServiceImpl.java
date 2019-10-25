@@ -33,16 +33,17 @@ public class ArtistServiceImpl implements ArtistService{
 		return artist;
 	}
 
-	@Override
-	public Artist getArtistByUsernameAndPassword(String username, String password) {
-		Artist artist = ar.findByUsername(username);
-		if(artist.getPassword().equals(password)) {
-			return artist;
-		}else {
-			return null;
-		}
-		
-	}
+//	@Override
+//	public Artist getArtistByUsernameAndPassword(String username, String password) {
+//		Artist artist = ar.findByUsername(username);
+//		System.out.println(artist.getPassword());
+//		if(artist.getPassword().equals(password)) {
+//			return artist;
+//		}else {
+//			return null;
+//		}
+//		
+//	}
 
 	@Override
 	public Artist updateArtist(Artist artist) {

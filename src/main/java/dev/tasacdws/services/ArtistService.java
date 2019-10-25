@@ -11,7 +11,7 @@ public interface ArtistService {
 	//read
 	Artist getArtistById(int id);
 	Artist getArtistByUsername(String username);
-	Artist getArtistByUsernameAndPassword(String username, String password);
+	//Artist getArtistByUsernameAndPassword(String username, String password);
 	
 	//update
 	Artist updateArtist(Artist artist);
