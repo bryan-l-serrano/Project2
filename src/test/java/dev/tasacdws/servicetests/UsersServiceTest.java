@@ -55,7 +55,7 @@ class UsersServiceTest {
 	@Order(3)
 	void getUserByUsername() {
 		Users art = this.us.getUserByUsername("regularjoe456");
-		assertTrue(art.getName().equals("Joe"));
+		assertTrue(art.getPassword().equals("password"));
 	}
 	
 	@Test
