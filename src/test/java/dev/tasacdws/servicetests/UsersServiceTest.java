@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.core.annotation.Order;
 import org.springframework.test.annotation.Commit;
+import org.springframework.test.annotation.Rollback;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.transaction.annotation.Transactional;
@@ -20,7 +21,7 @@ import dev.tasacdws.entities.Users;
 import dev.tasacdws.services.UserService;
 
 @SpringBootTest
-@Transactional
+//@Transactional
 @ExtendWith(SpringExtension.class)
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 @ContextConfiguration(classes = Project2BackendApplication.class)
@@ -41,33 +42,31 @@ class UsersServiceTest {
 		u.setPassword("password");
 		u.setUsername("coolestDude1");
 		u = this.us.createUser(u);
-		id = u.getId();
-		System.out.println(id);
 	}
 	
 	@Test
 	@Order(2)
 	void getUserById() {
-		Users art = this.us.getUserById(id);
+		Users art = this.us.getUserById(1);
 		assertTrue(art.getPassword().equals("password"));
 	}
 	
 	@Test
 	@Order(3)
 	void getUserByUsername() {
-		Users art = this.us.getUserByUsername("coolestDude1");
-		assertTrue(art.getName().equals("User1"));
+		Users art = this.us.getUserByUsername("regularjoe456");
+		assertTrue(art.getName().equals("Joe"));
 	}
 	
 	@Test
 	@Order(4)
-	@Commit
+	@Rollback
 	void updateUser() {
-		Users art = this.us.getUserByUsername("coolestDude1");
+		Users art = this.us.getUserById(1);
 		art.setName("wow");
 		this.us.updateUser(art);
 		
-		Users art2 = this.us.getUserByUsername("coolestDude1");
+		Users art2 = this.us.getUserById(1);
 		assertTrue(art2.getName().equals("wow"));
 	}
 	

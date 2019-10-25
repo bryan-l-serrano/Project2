@@ -22,7 +22,7 @@ import dev.tasacdws.services.ArtistService;
 import dev.tasacdws.services.UserService;
 
 @SpringBootTest
-@Transactional
+//@Transactional
 @ExtendWith(SpringExtension.class)
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 @ContextConfiguration(classes = Project2BackendApplication.class)
@@ -31,7 +31,6 @@ class ArtistServiceTest {
 	@Autowired
 	ArtistService as;
 	
-	int id;
 
 	@Test
 	@Order(1)
@@ -43,22 +42,20 @@ class ArtistServiceTest {
 		art.setPassword("password");
 		art.setUsername("coolerDude");
 		art = this.as.createArtist(art);
-		id = art.getId();
-		System.out.println(id);
 	}
 	
 	@Test
 	@Order(2)
 	void getArtistById() {
-		Artist art = this.as.getArtistById(id);
+		Artist art = this.as.getArtistById(1);
 		assertTrue(art.getPassword().equals("password"));
 	}
 	
 	@Test
 	@Order(3)
 	void getArtistByUsername() {
-		Artist art = this.as.getArtistByUsername("coolerDude");
-		assertTrue(art.getName().equals("New Artist"));
+		Artist art = this.as.getArtistByUsername("musicman321");
+		assertTrue(art.getName().equals("wow"));
 	}
 	
 //	@Test
@@ -71,12 +68,13 @@ class ArtistServiceTest {
 	
 	@Test
 	@Order(4)
+	@Rollback
 	void updateArtist() {
-		Artist art = this.as.getArtistByUsername("coolerDude");
+		Artist art = this.as.getArtistById(1);
 		art.setName("wow");
 		this.as.updateArtist(art);
 		
-		Artist art2 = this.as.getArtistByUsername("coolerDude");
+		Artist art2 = this.as.getArtistById(1);
 		assertTrue(art2.getName().equals("wow"));
 	}
 	
