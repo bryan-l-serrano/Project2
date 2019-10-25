@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 import dev.tasacdws.entities.Artist;
 import dev.tasacdws.services.ArtistService;
 
+@CrossOrigin(origins = "http://ec2-18-216-221-127.us-east-2.compute.amazonaws.com:9999")
 @Component
 @RestController
 public class ArtistController {
@@ -18,7 +19,6 @@ public class ArtistController {
 	@Autowired
 	ArtistService as;
 	
-	@CrossOrigin(origins = "http://ec2-18-216-221-127.us-east-2.compute.amazonaws.com:9999")
 	@RequestMapping(value = "/artist", method = RequestMethod.POST)
 	public Artist createArtist(@RequestBody Artist artist) {
 		artist = as.createArtist(artist);
