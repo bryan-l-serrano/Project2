@@ -1,0 +1,5 @@
+Function		URL		Method
+--------------------------------------------
+Create User		/user		POST
+Create Artist		/artist		POST
+
