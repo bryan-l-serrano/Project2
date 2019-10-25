@@ -12,7 +12,7 @@ import dev.tasacdws.entities.Users;
 import dev.tasacdws.services.UserService;
 
 
-@CrossOrigin(origins = "http://ec2-18-216-221-127.us-east-2.compute.amazonaws.com:9999")
+@CrossOrigin(origins = "*")
 @Component
 @RestController
 public class UserController{
