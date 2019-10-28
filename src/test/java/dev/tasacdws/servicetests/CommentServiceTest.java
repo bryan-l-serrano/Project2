@@ -36,25 +36,25 @@ class CommentServiceTest {
 	UserService us;
 
 	// Works
-	@Test
-	@Order(1)
-	@Commit
-	public void createComment() {
-		Comment comment = new Comment();
-		comment.setId(0);
-		comment.setComment("Adam Ranieri");
-		comment.setRating(2);
-		comment.setSong(this.ss.getSongById(1));
-		comment.setUser(this.us.getUserById(1));
-		comment = this.cs.createComment(comment);
-	}
+//	@Test
+//	@Order(1)
+//	@Commit
+//	public void createComment() {
+//		Comment comment = new Comment();
+//		comment.setId(0);
+//		comment.setComment("Adam Ranieri");
+//		comment.setRating(2);
+//		comment.setSong(this.ss.getSongById(1));
+//		comment.setUser(this.us.getUserById(1));
+//		comment = this.cs.createComment(comment);
+//	}
 	
 	// Works
 	@Test
 	@Order(2)
 	public void getCommentById() {
 		Comment comment = this.cs.getCommentById(1);
-		assertTrue(comment.getComment().equals("Yooooooooooo this song is dope"));
+		assertTrue(comment.getUser().getId() == 1);
 	}
 	
 //	@Test
@@ -82,12 +82,12 @@ class CommentServiceTest {
 		assertTrue(comment2.getComment().equals("Actually this song is terrible"));
 	}
 	
-	@Test
-	@Order(6)
-	@Commit
-	public void deleteComment() {
-		Comment comment = this.cs.getCommentById(3);
-		assertTrue(this.cs.deleteComment(comment));
-	}
+//	@Test
+//	@Order(6)
+//	@Commit
+//	public void deleteComment()
+//		Comment comment = this.cs.getCommentById(3);
+//		assertTrue(this.cs.deleteComment(comment));
+//	}
 
 }
