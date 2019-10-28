@@ -1,14 +1,21 @@
 package dev.tasacdws.entities;
 
+import java.util.Set;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
 @Entity
 @Table(name="users")
+@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")
 public class Users {
 	
 	@Id
@@ -24,18 +31,22 @@ public class Users {
 	
 	@Column(name = "password")
 	private String password;
+	
+	@OneToMany(mappedBy = "user")
+	private Set<Comment> comments;
 
 	public Users() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
-	public Users(int id, String name, String username, String password) {
+	public Users(int id, String name, String username, String password, Set<Comment> comments) {
 		super();
 		this.id = id;
 		this.name = name;
 		this.username = username;
 		this.password = password;
+		this.comments = comments;
 	}
 
 	public int getId() {
@@ -70,9 +81,18 @@ public class Users {
 		this.password = password;
 	}
 
+	public Set<Comment> getComments() {
+		return comments;
+	}
+
+	public void setComments(Set<Comment> comments) {
+		this.comments = comments;
+	}
+
 	@Override
 	public String toString() {
-		return "users [id=" + id + ", name=" + name + ", username=" + username + ", password=" + password + "]";
+		return "Users [id=" + id + ", name=" + name + ", username=" + username + ", password=" + password
+				+ ", comments=" + comments + "]";
 	}
 	
 	
