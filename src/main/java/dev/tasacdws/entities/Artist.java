@@ -10,25 +10,28 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+
 @Entity
-@Table(name="artist")
+@Table(name = "artist")
+@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")
 public class Artist {
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "a_id")
 	private int id;
-	
+
 	@Column(name = "name")
 	private String name;
-	
+
 	@Column(name = "username")
 	private String username;
-	
+
 	@Column(name = "password")
 	private String password;
-	
-	
+
 	@OneToMany(mappedBy = "artist")
 	private Set<Song> songs;
 
@@ -90,7 +93,5 @@ public class Artist {
 	public String toString() {
 		return "Artist [id=" + id + ", name=" + name + ", username=" + username + ", password=" + password + "]";
 	}
-	
-	
 
 }
