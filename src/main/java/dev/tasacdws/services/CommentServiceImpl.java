@@ -8,6 +8,8 @@ import org.springframework.stereotype.Service;
 
 import dev.tasacdws.entities.Comment;
 import dev.tasacdws.repositories.CommentRepository;
+import dev.tasacdws.repositories.SongRepository;
+import dev.tasacdws.repositories.UsersRepository;
 
 @Component
 @Service
@@ -15,6 +17,12 @@ public class CommentServiceImpl implements CommentService {
 	
 	@Autowired
 	CommentRepository cr;
+	
+	@Autowired
+	UsersRepository ur;
+	
+	@Autowired
+	SongRepository sr;
 
 	@Override
 	public Comment createComment(Comment comment) {
@@ -32,15 +40,15 @@ public class CommentServiceImpl implements CommentService {
 	 * THESE ARE NOT YET IMPLEMENTED
 	 */
 	@Override
-	public Set<Comment> getAllCommentsBySongId() {
-		// TODO Auto-generated method stub
-		return null;
+	public Set<Comment> getAllCommentsBySongId(int id) {
+		Set<Comment> comments = sr.findById(id).get().getComments();
+		return comments;
 	}
 
 	@Override
-	public Set<Comment> getAllCommentsByUserId() {
-		// TODO Auto-generated method stub
-		return null;
+	public Set<Comment> getAllCommentsByUserId(int id) {
+		Set<Comment> comments = ur.findById(id).get().getComments();
+		return comments;
 	}
 	/*
 	 * 

@@ -94,8 +94,7 @@ public class Comment {
 
 	@Override
 	public String toString() {
-		return "Comment [id=" + id + ", comment=" + comment + ", rating=" + rating + ", user=" + user + ", song=" + song
-				+ "]";
+		return "Comment [id=" + id + ", comment=" + comment + ", rating=" + rating + "]";
 	}
 	
 	

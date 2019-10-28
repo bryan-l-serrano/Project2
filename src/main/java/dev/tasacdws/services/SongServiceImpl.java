@@ -9,6 +9,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
 import dev.tasacdws.entities.Song;
+import dev.tasacdws.repositories.ArtistRepository;
 import dev.tasacdws.repositories.SongRepository;
 
 @Component
@@ -17,6 +18,9 @@ public class SongServiceImpl implements SongService {
 	
 	@Autowired
 	SongRepository sr;
+	
+	@Autowired
+	ArtistRepository ar;
 
 	@Override
 	public Song createSong(Song song) {
@@ -38,8 +42,9 @@ public class SongServiceImpl implements SongService {
 
 	@Override
 	public Set<Song> getAllSongsByArtistId(int id) {
-		// TODO Auto-generated method stub
-		return null;
+		Set<Song> songs = ar.findById(id).get().getSongs();
+		System.out.println(songs);
+		return songs;
 	}
 
 	@Override

@@ -2,6 +2,8 @@ package dev.tasacdws.servicetests;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import java.util.Set;
+
 import org.junit.jupiter.api.MethodOrderer;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestMethodOrder;
@@ -57,17 +59,19 @@ class CommentServiceTest {
 		assertTrue(comment.getUser().getId() == 1);
 	}
 	
-//	@Test
-//	@Order(3)
-//	public void getCommentsBySongId() {
-//		
-//	}
+	@Test
+	@Order(3)
+	public void getCommentsBySongId() {
+		Set<Comment> comments = this.cs.getAllCommentsBySongId(1);
+		assertTrue(comments.size() > 0);
+	}
 	
-//	@Test
-//	@Order(4)
-//	public void getCommentsByUserId() {
-//		
-//	}
+	@Test
+	@Order(4)
+	public void getCommentsByUserId() {
+		Set<Comment> comments = this.cs.getAllCommentsByUserId(1);
+		assertTrue(comments.size() > 0);
+	}
 	
 	@Test
 	@Order(5)
