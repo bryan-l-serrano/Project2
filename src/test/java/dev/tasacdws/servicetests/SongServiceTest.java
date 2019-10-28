@@ -2,6 +2,8 @@ package dev.tasacdws.servicetests;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
+import java.util.Set;
+
 import org.junit.jupiter.api.MethodOrderer;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestMethodOrder;
@@ -57,17 +59,24 @@ class SongServiceTest {
 		assertTrue(song.getName().equals("Test Song"));
 	}
 	
-	// Not tested
-//	@Test
-//	@Order(3)
-//	public void getAllSongs() {
-//		Set<Song> songs = ss.getAllSongs();
-//		
-//	}
+	// Works
+	@Test
+	@Order(3)
+	public void getAllSongs() {
+		Set<Song> songs = ss.getAllSongs();
+		assertTrue(songs.size() > 0 && songs.size() == 5);
+	}
+	
+	@Test
+	@Order(4)
+	public void getSongsByArtistId() {
+		Set<Song> songs = ss.getAllSongsByArtistId(12);
+		assertTrue(songs.size() == 5);
+	}
 	
 	// Works
 	@Test
-	@Order(4)
+	@Order(5)
 	@Commit
 	public void updateSong() {
 		Song song = this.ss.getSongById(1);
@@ -78,7 +87,7 @@ class SongServiceTest {
 	}
 	
 	@Test
-	@Order(5)
+	@Order(6)
 	@Commit
 	public void deleteSong() {
 		Song song = ss.getSongById(2);

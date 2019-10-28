@@ -11,8 +11,8 @@ public interface CommentService {
 	
 	// Read
 	Comment getCommentById(int id);
-	Set<Comment> getAllCommentsBySongId();
-	Set<Comment> getAllCommentsByUserId();
+	Set<Comment> getAllCommentsBySongId(int id);
+	Set<Comment> getAllCommentsByUserId(int id);
 	
 	// Update
 	Comment updateComment(Comment comment);

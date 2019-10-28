@@ -4,6 +4,7 @@ import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -48,7 +49,7 @@ public class Song {
 	@Column(name = "link")
 	private String link;
 	
-	@OneToMany(mappedBy = "song")
+	@OneToMany(mappedBy = "song", fetch = FetchType.EAGER)
 	private Set<Comment> comments;
 	
 	
