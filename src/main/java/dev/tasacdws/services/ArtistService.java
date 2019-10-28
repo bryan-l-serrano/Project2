@@ -1,5 +1,7 @@
 package dev.tasacdws.services;
 
+import java.util.List;
+
 import dev.tasacdws.entities.Artist;
 
 public interface ArtistService {
@@ -11,6 +13,7 @@ public interface ArtistService {
 	//read
 	Artist getArtistById(int id);
 	Artist getArtistByUsername(String username);
+	List<Artist> getAllArtists();
 	//Artist getArtistByUsernameAndPassword(String username, String password);
 	
 	//update

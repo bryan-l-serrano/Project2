@@ -1,5 +1,7 @@
 package dev.tasacdws.services;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
@@ -59,6 +61,12 @@ public class ArtistServiceImpl implements ArtistService{
 		}catch(IllegalArgumentException e) {
 			return false;
 		}
+	}
+
+	@Override
+	public List<Artist> getAllArtists() {
+		List<Artist> artists = (List<Artist>) ar.findAll();
+		return artists;
 	}
 
 }
