@@ -35,11 +35,13 @@ public class UserController{
 		return user;
 	}
 	
+	/*
 	@RequestMapping(value = "/user/username", method = RequestMethod.POST)
 	public Users getUserByUsername(@RequestBody String username) {
 		Users user = this.us.getUserByUsername(username);
 		return user;
 	}
+	*/
 	
 	@RequestMapping(value = "/user/login", method = RequestMethod.POST)
 	public Users userLogin(@RequestBody Users response, HttpSession session) {
@@ -58,8 +60,12 @@ public class UserController{
 	
 	@RequestMapping(value = "/user", method = RequestMethod.PUT)
 	public Users updateUser(@RequestBody Users user) {
-		user = this.us.updateUser(user);
-		return user;
+		Users change = this.us.getUserById(user.getId());
+		change.setName(user.getName());
+		change.setPassword(user.getPassword());
+		change.setUsername(user.getUsername());
+		this.us.updateUser(change);
+		return change;
 		
 	}
 	
