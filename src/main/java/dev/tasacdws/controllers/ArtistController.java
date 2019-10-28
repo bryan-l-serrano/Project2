@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 import dev.tasacdws.entities.Artist;
 import dev.tasacdws.services.ArtistService;
 
-@CrossOrigin(origins = "http://ec2-18-216-221-127.us-east-2.compute.amazonaws.com:9999")
+@CrossOrigin(origins = "*")
 @Component
 @RestController
 public class ArtistController {
