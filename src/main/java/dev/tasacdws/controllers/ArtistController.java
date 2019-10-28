@@ -24,11 +24,17 @@ public class ArtistController {
 	@Autowired
 	ArtistService as;
 	
+	
+	//create
+	
 	@RequestMapping(value = "/artist", method = RequestMethod.POST)
 	public Artist createArtist(@RequestBody Artist artist) {
 		artist = as.createArtist(artist);
 		return artist;
 	}
+	
+	
+	//read
 	
 	@RequestMapping(value = "/artist/{id}", method = RequestMethod.GET)
 	public Artist getArtistById(@PathVariable int id) {
@@ -36,12 +42,34 @@ public class ArtistController {
 		return art;
 	}
 	
+	//@RequestMapping(value = "", method = RequestMethod.GET)
+	
 	@RequestMapping(value = "/artist", method = RequestMethod.GET)
 	public List<Artist> getAllArtists() {
 		List<Artist> artists = as.getAllArtists();
 		return artists;
 	}
 	
+	
+	//update
+	
+	@RequestMapping(value = "/artist", method = RequestMethod.PUT)
+	public Artist updateArtist(@RequestBody Artist artist) {
+		Artist toChange = as.getArtistById(artist.getId());
+		toChange.setName(artist.getName());
+		toChange.setPassword(artist.getPassword());
+		toChange.setUsername(artist.getUsername());
+		as.updateArtist(toChange);
+		return toChange;
+	}
+	
+	
+	//delete
+	
+	public boolean deleteArtist(int id) {
+		Artist artist = as.getArtistById(id);
+		return as.deleteArtist(artist);
+	}
 	
 
 

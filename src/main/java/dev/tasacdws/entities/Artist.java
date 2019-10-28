@@ -28,6 +28,7 @@ public class Artist {
 	@Column(name = "password")
 	private String password;
 	
+	
 	@OneToMany(mappedBy = "artist")
 	private Set<Song> songs;
 
