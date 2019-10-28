@@ -1,5 +1,7 @@
-Function		URL		Method
+Function			URL				Method
 --------------------------------------------
-Create User		/user		POST
-Create Artist		/artist		POST
+Create User			/user			POST
+Create Artist		/artist			POST
+ArtistByID			/artist/{id}	GET
+all artists			/artist			GET
 

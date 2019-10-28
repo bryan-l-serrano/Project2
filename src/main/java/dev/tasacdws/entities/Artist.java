@@ -87,8 +87,7 @@ public class Artist {
 
 	@Override
 	public String toString() {
-		return "Artist [id=" + id + ", name=" + name + ", username=" + username + ", password=" + password + ", songs="
-				+ songs + "]";
+		return "Artist [id=" + id + ", name=" + name + ", username=" + username + ", password=" + password + "]";
 	}
 	
 	
