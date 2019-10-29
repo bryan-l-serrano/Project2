@@ -32,17 +32,17 @@ class UsersServiceTest {
 	
 	int id;
 
-	@Test
-	@Order(1)
-	@Commit
-	public void createUser() {
-		Users u = new Users();
-		u.setId(0);
-		u.setName("User1");
-		u.setPassword("password");
-		u.setUsername("coolestDude1");
-		u = this.us.createUser(u);
-	}
+//	@Test
+//	@Order(1)
+//	@Commit
+//	public void createUser() {
+//		Users u = new Users();
+//		u.setId(0);
+//		u.setName("User1");
+//		u.setPassword("password");
+//		u.setUsername("coolestDude1");
+//		u = this.us.createUser(u);
+//	}
 	
 	@Test
 	@Order(2)
@@ -54,7 +54,7 @@ class UsersServiceTest {
 	@Test
 	@Order(3)
 	void getUserByUsername() {
-		Users art = this.us.getUserByUsername("regularjoe456");
+		Users art = this.us.getUserByUsername("bdog");
 		assertTrue(art.getPassword().equals("password"));
 	}
 	
@@ -72,14 +72,14 @@ class UsersServiceTest {
 	
 	
 	
-	@Test
-	@Order(5)
-	@Commit
-	void deleteUser() {
-		Users u = this.us.getUserByUsername("coolestDude1");
-		this.us.deleteUser(u);
-		assertNull(this.us.getUserByUsername("coolestDude1"));
-		
-	}
+//	@Test
+//	@Order(5)
+//	@Commit
+//	void deleteUser() {
+//		Users u = this.us.getUserByUsername("coolestDude1");
+//		this.us.deleteUser(u);
+//		assertNull(this.us.getUserByUsername("coolestDude1"));
+//		
+//	}
 
 }

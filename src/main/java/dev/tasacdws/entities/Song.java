@@ -49,6 +49,19 @@ public class Song {
 	@Column(name = "link")
 	private String link;
 	
+	@Column(name = "albumArt")
+	private String albumArt;
+	
+	public String getAlbumArt() {
+		return albumArt;
+	}
+
+	public void setAlbumArt(String albumArt) {
+		this.albumArt = albumArt;
+	}
+
+
+
 	@OneToMany(mappedBy = "song", fetch = FetchType.EAGER)
 	private Set<Comment> comments;
 	
@@ -60,7 +73,7 @@ public class Song {
 	}
 
 	public Song(int id, Artist artist, String name, long releaseDate, String albumName, int inAlbum, int rating,
-			String link, Set<Comment> comments) {
+			String link, Set<Comment> comments, String albumArt) {
 		super();
 		this.id = id;
 		this.artist = artist;
@@ -71,6 +84,7 @@ public class Song {
 		this.rating = rating;
 		this.link = link;
 		this.comments = comments;
+		this.albumArt = albumArt;
 	}
 
 

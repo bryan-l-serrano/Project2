@@ -32,17 +32,17 @@ class ArtistServiceTest {
 	ArtistService as;
 	
 
-	@Test
-	@Order(1)
-	@Commit
-	public void createArtist() {
-		Artist art = new Artist();
-		art.setId(0);
-		art.setName("New Artist");
-		art.setPassword("password");
-		art.setUsername("coolerDude");
-		art = this.as.createArtist(art);
-	}
+//	@Test
+//	@Order(1)
+//	@Commit
+//	public void createArtist() {
+//		Artist art = new Artist();
+//		art.setId(0);
+//		art.setName("New Artist");
+//		art.setPassword("password");
+//		art.setUsername("coolerDude");
+//		art = this.as.createArtist(art);
+//	}
 	
 	@Test
 	@Order(2)
@@ -54,8 +54,8 @@ class ArtistServiceTest {
 	@Test
 	@Order(3)
 	void getArtistByUsername() {
-		Artist art = this.as.getArtistByUsername("musicman321");
-		assertTrue(art.getName().equals("wow"));
+		Artist art = this.as.getArtistByUsername("bryan");
+		assertTrue(art.getId() == 1);
 	}
 	
 //	@Test
@@ -80,14 +80,14 @@ class ArtistServiceTest {
 	
 	
 	
-	@Test
-	@Order(5)
-	@Commit
-	void deleteArtist() {
-		Artist art = this.as.getArtistByUsername("coolerDude");
-		this.as.deleteArtist(art);
-		assertNull(this.as.getArtistByUsername("coolerDude"));
-		
-	}
+//	@Test
+//	@Order(5)
+//	@Commit
+//	void deleteArtist() {
+//		Artist art = this.as.getArtistByUsername("coolerDude");
+//		this.as.deleteArtist(art);
+//		assertNull(this.as.getArtistByUsername("coolerDude"));
+//		
+//	}
 
 }
