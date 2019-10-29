@@ -4,6 +4,7 @@ import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -34,7 +35,7 @@ public class Song {
 	private String name;
 	
 	@Column(name = "releaseDate")
-	private int releaseDate;
+	private long releaseDate;
 	
 	@Column(name = "albumName")
 	private String albumName;
@@ -48,7 +49,7 @@ public class Song {
 	@Column(name = "link")
 	private String link;
 	
-	@OneToMany(mappedBy = "song")
+	@OneToMany(mappedBy = "song", fetch = FetchType.EAGER)
 	private Set<Comment> comments;
 	
 	
@@ -58,7 +59,7 @@ public class Song {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Song(int id, Artist artist, String name, int releaseDate, String albumName, int inAlbum, int rating,
+	public Song(int id, Artist artist, String name, long releaseDate, String albumName, int inAlbum, int rating,
 			String link, Set<Comment> comments) {
 		super();
 		this.id = id;
@@ -110,13 +111,13 @@ public class Song {
 
 
 
-	public int getReleaseDate() {
+	public long getReleaseDate() {
 		return releaseDate;
 	}
 
 
 
-	public void setReleaseDate(int releaseDate) {
+	public void setReleaseDate(long releaseDate) {
 		this.releaseDate = releaseDate;
 	}
 

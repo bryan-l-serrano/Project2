@@ -4,6 +4,7 @@ import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -32,7 +33,7 @@ public class Artist {
 	@Column(name = "password")
 	private String password;
 
-	@OneToMany(mappedBy = "artist")
+	@OneToMany(mappedBy = "artist", fetch = FetchType.EAGER)
 	private Set<Song> songs;
 
 	public Artist() {
