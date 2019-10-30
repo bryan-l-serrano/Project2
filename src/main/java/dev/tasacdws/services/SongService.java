@@ -13,6 +13,7 @@ public interface SongService {
 	Song getSongById(int id);
 	Set<Song> getAllSongs();
 	Set<Song> getAllSongsByArtistId(int id);
+	Set<Song> getAllSongsByName(String name);
 	
 	// Update
 	Song updateSong(Song song);

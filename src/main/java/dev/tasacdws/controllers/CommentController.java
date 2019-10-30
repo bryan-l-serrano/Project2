@@ -14,7 +14,10 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import dev.tasacdws.entities.Comment;
+import dev.tasacdws.entities.TemporaryComment;
 import dev.tasacdws.services.CommentService;
+import dev.tasacdws.services.SongService;
+import dev.tasacdws.services.UserService;
 
 @CrossOrigin(origins = "*")
 @Component
@@ -24,13 +27,34 @@ public class CommentController {
 	@Autowired
 	CommentService cs;
 	
+	@Autowired
+	SongService ss;
+	
+	@Autowired
+	UserService us;
+	
 	// Create
-	@RequestMapping(value = "/comment/song", method = RequestMethod.POST)
-	public Comment createComment(@RequestBody Comment comment) {
-		System.out.println(comment);
-		comment = cs.createComment(comment);
-		return comment;
-	}
+//	@RequestMapping(value = "/comment/song", method = RequestMethod.POST)
+//	public Comment createComment(@RequestBody Comment comment) {
+//		System.out.println(comment);
+//		comment = cs.createComment(comment);
+//		return comment;
+//	}
+	
+	
+	// Create
+		@RequestMapping(value = "/comment/song", method = RequestMethod.POST)
+		public Comment createComment(@RequestBody TemporaryComment comment) {
+			System.out.println(comment);
+			Comment newcomment= new Comment();
+			newcomment.setComment(comment.getComment());
+			newcomment.setId(0);
+			newcomment.setRating(comment.getRating());
+			newcomment.setSong(ss.getSongById(comment.getSong()));
+			newcomment.setUser(us.getUserById(comment.getUser()));
+			newcomment = cs.createComment(newcomment);
+			return newcomment;
+		}
 	
 	// Read
 	@RequestMapping(value = "/comment/song/{id}", method = RequestMethod.GET)
