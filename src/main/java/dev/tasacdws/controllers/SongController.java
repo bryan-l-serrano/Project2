@@ -54,6 +54,12 @@ public class SongController {
 		
 	}
 	
+	@RequestMapping(value = "/song/name/{name}", method = RequestMethod.GET)
+	public Set<Song> getSongsByName(@PathVariable String name){
+		Set<Song> songs = ss.getAllSongsByName(name);
+		return songs;
+	}
+	
 	//update
 	@RequestMapping(value = "/song", method = RequestMethod.PUT)
 	public Song updateSong(@RequestBody Song song) {

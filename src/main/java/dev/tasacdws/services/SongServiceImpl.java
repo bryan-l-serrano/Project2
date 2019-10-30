@@ -64,4 +64,10 @@ public class SongServiceImpl implements SongService {
 		}
 	}
 
+	@Override
+	public Set<Song> getAllSongsByName(String name) {
+		Set<Song> songs = sr.findAllByName(name);
+		return songs;
+	}
+
 }
