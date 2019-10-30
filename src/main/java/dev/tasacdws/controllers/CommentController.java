@@ -25,7 +25,7 @@ public class CommentController {
 	CommentService cs;
 	
 	// Create
-	@RequestMapping(value = "/comment/song", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE, produces = "application/json")
+	@RequestMapping(value = "/comment/song", method = RequestMethod.POST)
 	public Comment createComment(@RequestBody Comment comment) {
 		System.out.println(comment);
 		comment = cs.createComment(comment);
