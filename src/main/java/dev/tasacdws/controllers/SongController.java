@@ -47,7 +47,7 @@ public class SongController {
 		
 	}
 	
-	@RequestMapping(value = "artist/song/{id}", method = RequestMethod.GET)
+	@RequestMapping(value = "/song/artist/{id}", method = RequestMethod.GET)
 	public Set<Song> getAllSongsByArtistId(@PathVariable int id){
 		Set<Song> songs = ss.getAllSongsByArtistId(id);
 		return songs;

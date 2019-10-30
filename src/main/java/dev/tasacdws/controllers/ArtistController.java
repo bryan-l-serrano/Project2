@@ -65,9 +65,8 @@ public class ArtistController {
 	
 	
 	//delete
-	
-	public boolean deleteArtist(int id) {
-		Artist artist = as.getArtistById(id);
+	@RequestMapping(value = "/artist", method = RequestMethod.DELETE)
+	public boolean deleteArtist(@RequestBody Artist artist) {
 		return as.deleteArtist(artist);
 	}
 	

@@ -1,7 +1,41 @@
-Function			URL				Method
---------------------------------------------
-Create User			/user			POST
-Create Artist		/artist			POST
-ArtistByID			/artist/{id}	GET
-all artists			/artist			GET
+Function				URL					Method			INPUT TYPE
+-----------------------------------------------------------
+
+ARTIST CONTROLLER
+
+
+Create Artist			/artist				POST			Artist
+ArtistByID				/artist/{id}		GET				int
+all artists				/artist				GET				N/A
+update artist			/artist				PUT				Artist
+delete artist			/artist				DELETE			Artist
+artist login			/artist/login		POST			Artist
+
+
+USER CONTROLLER
+
+create User				/user				POST			User
+userById				/user/{id}			GET				int
+user login				/user/login			POST			User
+update user				/user				PUT				User
+delete user				/user/{id}			DELETE			int
+
+
+SONG CONTROLLER
+
+create song				/song				POST			Song
+songByID				/song/{id}			GET				int
+getAllSong				/song				GET				N/A
+getallsongsbyartistid	/song/artist/{id}	GET				int
+update song				/song				PUT				Song
+delete song				/song				DELETE			Song
+
+
+COMMNET CONTROLLER 
+
+create comment			/comment/song		POST			Comment
+getallcommentsbysongid	/comment/song/{id}	GET				int
+getallcommentsbyuserid	/comment/user/{id}	GET				int
+update comment			/comment			PUT				Comment
+delete comment			/comment			DELETE			Comment		
 
