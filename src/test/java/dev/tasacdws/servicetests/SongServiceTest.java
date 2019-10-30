@@ -72,12 +72,20 @@ class SongServiceTest {
 	@Order(4)
 	public void getSongsByArtistId() {
 		Set<Song> songs = ss.getAllSongsByArtistId(1);
-		assertTrue(songs.size() == 1);
+		assertTrue(songs.size() > 1);
+	}
+	
+	@Test
+	@Order(5)
+	public void getAllSongsByName() {
+		Set<Song> songs = ss.getAllSongsByName("song11111");
+		System.out.println(songs);
+		assertTrue(songs.size() > 1);
 	}
 	
 	// Works
 	@Test
-	@Order(5)
+	@Order(6)
 	@Rollback
 	public void updateSong() {
 		Song song = this.ss.getSongById(1);
