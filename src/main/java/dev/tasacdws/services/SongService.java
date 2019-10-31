@@ -8,16 +8,17 @@ import dev.tasacdws.entities.TemporarySong;
 public interface SongService {
 	
 	// Create
-	Song createSong(TemporarySong song);
+	TemporarySong createSong(TemporarySong song);
 	
 	// Read
+	//TemporarySong getTemporarySongById(int id);
 	Song getSongById(int id);
 	Set<TemporarySong> getAllSongs();
-	Set<Song> getAllSongsByArtistId(int id);
-	Set<Song> getAllSongsByName(String name);
+	Set<TemporarySong> getAllSongsByArtistId(int id);
+	Set<TemporarySong> getAllSongsByName(String name);
 	
 	// Update
-	Song updateSong(Song song);
+	TemporarySong updateSong(TemporarySong song);
 	
 	// Delete
 	boolean deleteSong(Song song);

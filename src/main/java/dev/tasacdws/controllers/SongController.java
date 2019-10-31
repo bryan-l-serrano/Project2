@@ -27,17 +27,26 @@ public class SongController {
 	
 	//create
 	@RequestMapping(value = "/song", method = RequestMethod.POST)
-	public Song createSong(@RequestBody TemporarySong song) {
-		Song newSong = ss.createSong(song);
-		return newSong;
-		
+	public TemporarySong createSong(@RequestBody TemporarySong song) {
+		song = ss.createSong(song);
+		return song;
 	}
 	
 	//read
 	@RequestMapping(value = "/song/{id}", method = RequestMethod.GET)
-	public Song getSongById(@PathVariable int id) {
-		Song song = ss.getSongById(id);
-		return song;
+	public TemporarySong getSongById(@PathVariable int id) {
+		Song s = ss.getSongById(id);
+		TemporarySong newSong = new TemporarySong();
+		newSong.setId(s.getId());
+		newSong.setArtistId(s.getArtist().getId());
+		newSong.setName(s.getName());
+		newSong.setReleaseDate(s.getReleaseDate());
+		newSong.setAlbumName(s.getAlbumName());
+		newSong.setInAlbum(s.getInAlbum());
+		newSong.setRating(s.getRating());
+		newSong.setLink(s.getLink());
+		newSong.setAlbumArt(s.getAlbumArt());
+		return newSong;
 		
 	}
 	
@@ -49,33 +58,23 @@ public class SongController {
 	}
 	
 	@RequestMapping(value = "/song/artist/{id}", method = RequestMethod.GET)
-	public Set<Song> getAllSongsByArtistId(@PathVariable int id){
-		Set<Song> songs = ss.getAllSongsByArtistId(id);
+	public Set<TemporarySong> getAllSongsByArtistId(@PathVariable int id){
+		Set<TemporarySong> songs = ss.getAllSongsByArtistId(id);
 		return songs;
 		
 	}
 	
 	@RequestMapping(value = "/song/name/{name}", method = RequestMethod.GET)
-	public Set<Song> getSongsByName(@PathVariable String name){
-		Set<Song> songs = ss.getAllSongsByName(name);
+	public Set<TemporarySong> getSongsByName(@PathVariable String name){
+		Set<TemporarySong> songs = ss.getAllSongsByName(name);
 		return songs;
 	}
 	
 	//update
 	@RequestMapping(value = "/song", method = RequestMethod.PUT)
-	public Song updateSong(@RequestBody Song song) {
-		Song change = this.ss.getSongById(song.getId());
-		change.setAlbumName(song.getAlbumName());
-		change.setArtist(song.getArtist());
-		change.setComments(song.getComments());
-		change.setInAlbum(song.getInAlbum());
-		change.setLink(song.getLink());
-		change.setName(song.getName());
-		change.setRating(song.getRating());
-		change.setReleaseDate(song.getReleaseDate());
-		
-		this.ss.updateSong(change);
-		return change;
+	public TemporarySong updateSong(@RequestBody TemporarySong song) {
+		song = this.ss.updateSong(song);
+		return song;
 		
 	}
 	
