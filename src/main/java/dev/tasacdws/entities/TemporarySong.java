@@ -84,6 +84,13 @@ public class TemporarySong {
 		this.link = link;
 		this.albumArt = albumArt;
 	}
+	@Override
+	public String toString() {
+		return "TemporarySong [id=" + id + ", artistId=" + artistId + ", name=" + name + ", releaseDate=" + releaseDate
+				+ ", albumName=" + albumName + ", inAlbum=" + inAlbum + ", rating=" + rating + ", link=" + link
+				+ ", albumArt=" + albumArt + "]\n";
+	}
+	
 	
 	
 

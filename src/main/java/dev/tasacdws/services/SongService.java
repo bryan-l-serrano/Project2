@@ -12,7 +12,7 @@ public interface SongService {
 	
 	// Read
 	Song getSongById(int id);
-	Set<Song> getAllSongs();
+	Set<TemporarySong> getAllSongs();
 	Set<Song> getAllSongsByArtistId(int id);
 	Set<Song> getAllSongsByName(String name);
 	

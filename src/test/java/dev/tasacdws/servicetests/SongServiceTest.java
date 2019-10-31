@@ -19,6 +19,7 @@ import org.springframework.test.context.junit.jupiter.SpringExtension;
 import com.example.demo.Project2BackendApplication;
 
 import dev.tasacdws.entities.Song;
+import dev.tasacdws.entities.TemporarySong;
 import dev.tasacdws.services.ArtistService;
 import dev.tasacdws.services.SongService;
 
@@ -64,7 +65,7 @@ class SongServiceTest {
 	@Test
 	@Order(3)
 	public void getAllSongs() {
-		Set<Song> songs = ss.getAllSongs();
+		Set<TemporarySong> songs = ss.getAllSongs();
 		System.out.println(songs.size());
 		System.out.println(songs);
 		assertTrue(songs.size() > 0 );

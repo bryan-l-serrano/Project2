@@ -46,9 +46,25 @@ public class SongServiceImpl implements SongService {
 	}
 
 	@Override
-	public Set<Song> getAllSongs() {
+	public Set<TemporarySong> getAllSongs() {
 		Set<Song> songs = new HashSet<Song>((Collection<? extends Song>) sr.findAll());
-		return songs;
+		Set<TemporarySong> ts = new HashSet<TemporarySong>();
+		
+		for(Song s : songs) {
+			TemporarySong newSong = new TemporarySong();
+			newSong.setId(s.getId());
+			newSong.setArtistId(s.getArtist().getId());
+			newSong.setName(s.getName());
+			newSong.setReleaseDate(s.getReleaseDate());
+			newSong.setAlbumName(s.getAlbumName());
+			newSong.setInAlbum(s.getInAlbum());
+			newSong.setRating(s.getRating());
+			newSong.setLink(s.getLink());
+			newSong.setAlbumArt(s.getAlbumArt());
+			ts.add(newSong);
+		}
+		
+		return ts;
 	}
 
 	@Override

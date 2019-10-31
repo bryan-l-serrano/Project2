@@ -42,8 +42,8 @@ public class SongController {
 	}
 	
 	@RequestMapping(value = "/song", method = RequestMethod.GET)
-	public Set<Song> getAllSongs() {
-		Set<Song> songs = ss.getAllSongs();
+	public Set<TemporarySong> getAllSongs() {
+		Set<TemporarySong> songs = ss.getAllSongs();
 		return songs;
 		
 	}
