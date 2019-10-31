@@ -24,7 +24,7 @@ public class SongServiceImpl implements SongService {
 	ArtistRepository ar;
 
 	@Override
-	public Song createSong(TemporarySong song) {
+	public TemporarySong createSong(TemporarySong song) {
 		Song newSong = new Song();
 		newSong.setId(song.getId());
 		newSong.setArtist(ar.findById(song.getArtistId()).get());
@@ -36,7 +36,7 @@ public class SongServiceImpl implements SongService {
 		newSong.setLink(song.getLink());
 		newSong.setAlbumArt(song.getAlbumArt());
 		newSong = sr.save(newSong);
-		return newSong;
+		return song;
 	}
 
 	@Override
@@ -57,6 +57,7 @@ public class SongServiceImpl implements SongService {
 			newSong.setName(s.getName());
 			newSong.setReleaseDate(s.getReleaseDate());
 			newSong.setAlbumName(s.getAlbumName());
+			newSong.setComments(s.getComments());
 			newSong.setInAlbum(s.getInAlbum());
 			newSong.setRating(s.getRating());
 			newSong.setLink(s.getLink());
@@ -68,15 +69,40 @@ public class SongServiceImpl implements SongService {
 	}
 
 	@Override
-	public Set<Song> getAllSongsByArtistId(int id) {
+	public Set<TemporarySong> getAllSongsByArtistId(int id) {
 		Set<Song> songs = ar.findById(id).get().getSongs();
-		System.out.println(songs);
-		return songs;
+		Set<TemporarySong> ts = new HashSet<TemporarySong>();
+		
+		for(Song s : songs) {
+			TemporarySong newSong = new TemporarySong();
+			newSong.setId(s.getId());
+			newSong.setArtistId(s.getArtist().getId());
+			newSong.setName(s.getName());
+			newSong.setReleaseDate(s.getReleaseDate());
+			newSong.setAlbumName(s.getAlbumName());
+			newSong.setComments(s.getComments());
+			newSong.setInAlbum(s.getInAlbum());
+			newSong.setRating(s.getRating());
+			newSong.setLink(s.getLink());
+			newSong.setAlbumArt(s.getAlbumArt());
+			ts.add(newSong);
+		}
+		return ts;
 	}
 
 	@Override
-	public Song updateSong(Song song) {
-		song = sr.save(song);
+	public TemporarySong updateSong(TemporarySong song) {
+		Song change = getSongById(song.getId());
+		change.setAlbumName(song.getAlbumName());
+		change.setArtist(ar.findById(song.getArtistId()).get());
+		change.setComments(song.getComments());
+		change.setInAlbum(song.getInAlbum());
+		change.setLink(song.getLink());
+		change.setComments(song.getComments());
+		change.setName(song.getName());
+		change.setRating(song.getRating());
+		change.setReleaseDate(song.getReleaseDate());
+		change = sr.save(change);
 		return song;
 	}
 
@@ -92,9 +118,25 @@ public class SongServiceImpl implements SongService {
 	}
 
 	@Override
-	public Set<Song> getAllSongsByName(String name) {
+	public Set<TemporarySong> getAllSongsByName(String name) {
 		Set<Song> songs = sr.findAllByName(name);
-		return songs;
+		Set<TemporarySong> ts = new HashSet<TemporarySong>();
+		
+		for(Song s : songs) {
+			TemporarySong newSong = new TemporarySong();
+			newSong.setId(s.getId());
+			newSong.setArtistId(s.getArtist().getId());
+			newSong.setName(s.getName());
+			newSong.setComments(s.getComments());
+			newSong.setReleaseDate(s.getReleaseDate());
+			newSong.setAlbumName(s.getAlbumName());
+			newSong.setInAlbum(s.getInAlbum());
+			newSong.setRating(s.getRating());
+			newSong.setLink(s.getLink());
+			newSong.setAlbumArt(s.getAlbumArt());
+			ts.add(newSong);
+		}
+		return ts;
 	}
 
 }
