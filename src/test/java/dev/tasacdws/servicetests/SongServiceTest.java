@@ -65,6 +65,8 @@ class SongServiceTest {
 	@Order(3)
 	public void getAllSongs() {
 		Set<Song> songs = ss.getAllSongs();
+		System.out.println(songs.size());
+		System.out.println(songs);
 		assertTrue(songs.size() > 0 );
 	}
 	

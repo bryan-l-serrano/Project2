@@ -3,11 +3,12 @@ package dev.tasacdws.services;
 import java.util.Set;
 
 import dev.tasacdws.entities.Song;
+import dev.tasacdws.entities.TemporarySong;
 
 public interface SongService {
 	
 	// Create
-	Song createSong(Song song);
+	Song createSong(TemporarySong song);
 	
 	// Read
 	Song getSongById(int id);

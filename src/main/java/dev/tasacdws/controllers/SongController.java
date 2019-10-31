@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import dev.tasacdws.entities.Song;
+import dev.tasacdws.entities.TemporarySong;
 import dev.tasacdws.repositories.SongRepository;
 import dev.tasacdws.repositories.UsersRepository;
 import dev.tasacdws.services.SongService;
@@ -26,9 +27,9 @@ public class SongController {
 	
 	//create
 	@RequestMapping(value = "/song", method = RequestMethod.POST)
-	public Song createSong(@RequestBody Song song) {
-		song = ss.createSong(song);
-		return song;
+	public Song createSong(@RequestBody TemporarySong song) {
+		Song newSong = ss.createSong(song);
+		return newSong;
 		
 	}
 	
