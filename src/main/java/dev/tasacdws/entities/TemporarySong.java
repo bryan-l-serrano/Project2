@@ -1,5 +1,7 @@
 package dev.tasacdws.entities;
 
+import java.util.Set;
+
 public class TemporarySong {
 	
 	private int id;
@@ -12,8 +14,14 @@ public class TemporarySong {
 	private int rating;
 	private String link;
 	private String albumArt;
+	private Set<Comment> comments;
 	
-	
+	public Set<Comment> getComments() {
+		return comments;
+	}
+	public void setComments(Set<Comment> comments) {
+		this.comments = comments;
+	}
 	public int getId() {
 		return id;
 	}

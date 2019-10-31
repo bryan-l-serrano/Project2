@@ -74,29 +74,29 @@ class SongServiceTest {
 	@Test
 	@Order(4)
 	public void getSongsByArtistId() {
-		Set<Song> songs = ss.getAllSongsByArtistId(1);
+		Set<TemporarySong> songs = ss.getAllSongsByArtistId(1);
 		assertTrue(songs.size() > 1);
 	}
 	
 	@Test
 	@Order(5)
 	public void getAllSongsByName() {
-		Set<Song> songs = ss.getAllSongsByName("song11111");
+		Set<TemporarySong> songs = ss.getAllSongsByName("song11111");
 		System.out.println(songs);
 		assertTrue(songs.size() > 1);
 	}
 	
-	// Works
-	@Test
-	@Order(6)
-	@Rollback
-	public void updateSong() {
-		Song song = this.ss.getSongById(1);
-		song.setName("Test Song 1 (Updated)");
-		this.ss.updateSong(song);
-		Song song2 = this.ss.getSongById(1);
-		assertTrue(song2.getName().equals("Test Song 1 (Updated)"));
-	}
+//	// Works
+//	@Test
+//	@Order(6)
+//	@Rollback
+//	public void updateSong() {
+//		Song song = this.ss.getSongById(1);
+//		song.setName("Test Song 1 (Updated)");
+//		this.ss.updateSong(song);
+//		Song song2 = this.ss.getSongById(1);
+//		assertTrue(song2.getName().equals("Test Song 1 (Updated)"));
+//	}
 	
 //	@Test
 //	@Order(6)

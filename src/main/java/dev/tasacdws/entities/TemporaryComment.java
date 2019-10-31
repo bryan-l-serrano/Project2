@@ -9,6 +9,7 @@ public class TemporaryComment {
 	private int rating;
 	private int user;
 	private int song;
+	
 	public int getId() {
 		return id;
 	}
