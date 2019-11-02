@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import dev.tasacdws.entities.Comment;
+import dev.tasacdws.entities.Song;
 import dev.tasacdws.entities.TemporaryComment;
 import dev.tasacdws.services.CommentService;
 import dev.tasacdws.services.SongService;
@@ -58,8 +59,8 @@ public class CommentController {
 	
 	// Read
 	@RequestMapping(value = "/comment/song/{id}", method = RequestMethod.GET)
-	public Set<Comment> getAllCommentsBySongId(@PathVariable int id) {
-		Set<Comment> comments = cs.getAllCommentsBySongId(id);
+	public Set<TemporaryComment> getAllCommentsBySongId(@PathVariable int id) {
+		Set<TemporaryComment> comments = cs.getAllCommentsBySongId(id);
 		return comments;
 	}
 	
