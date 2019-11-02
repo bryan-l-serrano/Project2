@@ -74,18 +74,18 @@ class CommentServiceTest {
 		assertTrue(comments.size() > 0);
 	}
 	
-	@Test
-	@Order(5)
-	@Commit
-	public void updateComment() {
-		Comment comment = this.cs.getCommentById(1);
-		comment.setComment("Actually this song is terrible");
-		comment.setRating(-1000000);
-		comment = this.cs.updateComment(comment);
-		
-		Comment comment2 = this.cs.getCommentById(1);
-		assertTrue(comment2.getComment().equals("Actually this song is terrible"));
-	}
+//	@Test
+//	@Order(5)
+//	@Commit
+//	public void updateComment() {
+//		Comment comment = this.cs.getCommentById(1);
+//		comment.setComment("Actually this song is terrible");
+//		comment.setRating(-1000000);
+//		comment = this.cs.updateComment(comment);
+//		
+//		Comment comment2 = this.cs.getCommentById(1);
+//		assertTrue(comment2.getComment().equals("Actually this song is terrible"));
+//	}
 	
 //	@Test
 //	@Order(6)
