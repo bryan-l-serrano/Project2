@@ -18,6 +18,7 @@ import org.springframework.test.context.junit.jupiter.SpringExtension;
 import com.example.demo.Project2BackendApplication;
 
 import dev.tasacdws.entities.Comment;
+import dev.tasacdws.entities.TemporaryComment;
 import dev.tasacdws.services.CommentService;
 import dev.tasacdws.services.SongService;
 import dev.tasacdws.services.UserService;
@@ -62,7 +63,7 @@ class CommentServiceTest {
 	@Test
 	@Order(3)
 	public void getCommentsBySongId() {
-		Set<Comment> comments = this.cs.getAllCommentsBySongId(1);
+		Set<TemporaryComment> comments = this.cs.getAllCommentsBySongId(1);
 		assertTrue(comments.size() > 0);
 	}
 	
