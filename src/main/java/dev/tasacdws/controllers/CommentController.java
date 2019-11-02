@@ -72,12 +72,14 @@ public class CommentController {
 	
 	// Update
 	@RequestMapping(value = "/comment", method = RequestMethod.PUT)
-	public Comment updateComment(@RequestBody Comment comment) {
+	public TemporaryComment updateComment(@RequestBody TemporaryComment comment) {
 		Comment change = cs.getCommentById(comment.getId());
 		change.setComment(comment.getComment());
 		change.setRating(comment.getRating());
+		change.setSong(ss.getSongById(comment.getSong()));
+		change.setUser(us.getUserById(comment.getSong()));
 		cs.updateComment(change);
-		return change;
+		return comment;
 	}
 	
 	// Delete
