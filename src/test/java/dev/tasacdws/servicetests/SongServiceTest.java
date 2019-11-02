@@ -66,8 +66,8 @@ class SongServiceTest {
 	@Order(3)
 	public void getAllSongs() {
 		Set<TemporarySong> songs = ss.getAllSongs();
-		System.out.println(songs.size());
-		System.out.println(songs);
+		//System.out.println(songs.size());
+		//System.out.println(songs);
 		assertTrue(songs.size() > 0 );
 	}
 	
@@ -82,7 +82,7 @@ class SongServiceTest {
 	@Order(5)
 	public void getAllSongsByName() {
 		Set<TemporarySong> songs = ss.getAllSongsByName("song11111");
-		System.out.println(songs);
+		//System.out.println(songs);
 		assertTrue(songs.size() > 1);
 	}
 	

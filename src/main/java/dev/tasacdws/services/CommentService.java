@@ -3,6 +3,7 @@ package dev.tasacdws.services;
 import java.util.Set;
 
 import dev.tasacdws.entities.Comment;
+import dev.tasacdws.entities.TemporaryComment;
 
 public interface CommentService {
 	
@@ -11,7 +12,7 @@ public interface CommentService {
 	
 	// Read
 	Comment getCommentById(int id);
-	Set<Comment> getAllCommentsBySongId(int id);
+	Set<TemporaryComment> getAllCommentsBySongId(int id);
 	Set<Comment> getAllCommentsByUserId(int id);
 	
 	// Update

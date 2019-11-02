@@ -1,5 +1,6 @@
 package dev.tasacdws.services;
 
+import java.util.HashSet;
 import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -7,6 +8,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
 import dev.tasacdws.entities.Comment;
+import dev.tasacdws.entities.TemporaryComment;
 import dev.tasacdws.repositories.CommentRepository;
 import dev.tasacdws.repositories.SongRepository;
 import dev.tasacdws.repositories.UsersRepository;
@@ -36,13 +38,21 @@ public class CommentServiceImpl implements CommentService {
 		return comment;
 	}
 
-	/*
-	 * THESE ARE NOT YET IMPLEMENTED
-	 */
 	@Override
-	public Set<Comment> getAllCommentsBySongId(int id) {
+	public Set<TemporaryComment> getAllCommentsBySongId(int id) {
 		Set<Comment> comments = sr.findById(id).get().getComments();
-		return comments;
+		Set<TemporaryComment> tc = new HashSet<TemporaryComment>();
+		
+		for(Comment c : comments) {
+			TemporaryComment newCom = new TemporaryComment();
+			newCom.setId(c.getId());
+			newCom.setComment(c.getComment());
+			newCom.setRating(c.getRating());
+			newCom.setSong(c.getSong().getId());
+			newCom.setUser(c.getUser().getId());
+			tc.add(newCom);
+		}
+		return tc;
 	}
 
 	@Override
