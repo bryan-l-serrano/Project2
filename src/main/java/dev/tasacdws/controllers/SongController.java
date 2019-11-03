@@ -61,7 +61,12 @@ public class SongController {
 	public Set<TemporarySong> getAllSongsByArtistId(@PathVariable int id){
 		Set<TemporarySong> songs = ss.getAllSongsByArtistId(id);
 		return songs;
-		
+	}
+	
+	@RequestMapping(value = "/song/artist/name/{name}", method = RequestMethod.GET)
+	public Set<TemporarySong> getAllSongsByArtistName(@PathVariable String name){
+		Set<TemporarySong> songs = ss.getAllSongsByArtistName(name);
+		return songs;
 	}
 	
 	@RequestMapping(value = "/song/name/{name}", method = RequestMethod.GET)
