@@ -16,6 +16,7 @@ public interface SongService {
 	Set<TemporarySong> getAllSongs();
 	Set<TemporarySong> getAllSongsByArtistId(int id);
 	Set<TemporarySong> getAllSongsByName(String name);
+	Set<TemporarySong> getAllSongsByArtistName(String name);
 	
 	// Update
 	TemporarySong updateSong(TemporarySong song);
