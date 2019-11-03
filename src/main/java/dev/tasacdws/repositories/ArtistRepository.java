@@ -13,5 +13,6 @@ import dev.tasacdws.entities.Artist;
 @Repository
 public interface ArtistRepository extends CrudRepository<Artist,Integer> {
 	Artist findByUsername(String username);
+	Artist findByName(String name);
 
 }
