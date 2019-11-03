@@ -77,7 +77,7 @@ public class CommentController {
 		change.setComment(comment.getComment());
 		change.setRating(comment.getRating());
 		change.setSong(ss.getSongById(comment.getSong()));
-		change.setUser(us.getUserById(comment.getSong()));
+		change.setUser(us.getUserById(comment.getUser()));
 		cs.updateComment(change);
 		return comment;
 	}
